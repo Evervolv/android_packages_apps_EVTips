@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="tip_entries">
+        <item>I love how this works, I have no clue what to put there though. Any takers for ideas?</item>
+        <item>This little widget gives you tips on features you might not already know about!</item>
+        <item>Am i typing too much? Maybe, but it feels sooo good.</item>
+        <item>What the hell was I thinking, this text is way too much.</item>
+    </string-array>
+
+    <array name="tip_icons" translatable="false">
+        <item>@drawable/twitter</item>
+        <item>@drawable/widgets</item>
+        <item>@drawable/android</item>
+        <item>@drawable/evervolv</item>
+    </array>
+</resources>
