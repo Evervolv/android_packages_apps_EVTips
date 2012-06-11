@@ -20,15 +20,19 @@ package com.evervolv.evtips;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
+
+import com.evervolv.evtips.R;
 
 public class StackWidgetService extends RemoteViewsService {
     @Override
@@ -38,12 +42,16 @@ public class StackWidgetService extends RemoteViewsService {
 }
 
 class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
+    
+    public static final String TAG = "EVTips";
+
     private int mCount;
     private List<TipItem> mTipItems = new ArrayList<TipItem>();
     private int[] mIconResourceIds;
     private String[] mTipText;
     private Context mContext;
     private int mAppWidgetId;
+    private String[] mTipUri;
 
     public StackRemoteViewsFactory(Context context, Intent intent) {
         mContext = context;
@@ -55,13 +63,21 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         
         Resources res = mContext.getResources();
         TypedArray ar = res.obtainTypedArray(R.array.tip_icons);
-        mCount = ar.length(); 
-        mIconResourceIds = new int[mCount];
         mTipText = res.getStringArray(R.array.tip_entries);
+        mTipUri = res.getStringArray(R.array.tip_uri);
+        mCount = mTipText.length; 
+        mIconResourceIds = new int[mCount];
         
         for (int i = 0; i < mCount; i++) {
             mIconResourceIds[i] = ar.getResourceId(i, 0);
-            mTipItems.add(new TipItem(i + ": " + mTipText[i], mIconResourceIds[i], i + 1));
+            // If the Icon's resource Id does not exist, use a default. 
+            // Although this shoud not occur.
+            if (i >= (mCount - 1)) {
+                mTipItems.add(new TipItem(mTipText[i], R.drawable.default_icon, i + 1));
+            } else {
+                mTipItems.add(new TipItem(mTipText[i], mIconResourceIds[i], i + 1));
+            }
+            
         }
 
         // We sleep for 3 seconds here to show how the empty view appears in the interim.
@@ -85,11 +101,13 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
     public RemoteViews getViewAt(int position) {
         // position will always range from 0 to getCount() - 1.
 
-        RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_item);
+        RemoteViews rv = new RemoteViews(mContext.getPackageName(),
+                R.layout.widget_item);
         rv.setTextViewText(R.id.widget_item, mTipItems.get(position).mText);
         rv.setImageViewResource(R.id.widget_icon, mTipItems.get(position).mIconId);
-        rv.setTextViewText(R.id.widget_count, String.format(mContext.getString(R.string.item_counts, mTipItems.get(position).mIndex, mCount)));
-
+        rv.setTextViewText(R.id.widget_count, String.format(mContext.getString(
+                R.string.item_counts, mTipItems.get(position).mIndex, mCount)));
+        
         Bundle extras = new Bundle();
         extras.putInt(StackWidgetProvider.EXTRA_ITEM, position);
         Intent fillInIntent = new Intent();
