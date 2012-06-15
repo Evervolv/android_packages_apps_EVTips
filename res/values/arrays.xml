@@ -3,6 +3,7 @@
 <resources>
         <!-- Each tip_entry represents a slide that the user can fling up and down to read tips. -->
     <string-array name="tip_entries">
+        <item>Press any of these tips to open the link or app associated with them!</item>
         <item>Checkout the website! http://www.evervolv.com</item>
         <item>Want a different lockscreen style? Choose one! Settings > Toolbox > Lockscreen > Lockscreen style</item>
         <item>Don\'t forget to swipe! Swiping horizontally in the notifications dropdown, slides open a bunch of widgets of all kind!</item>
@@ -14,6 +15,7 @@
     </string-array>
         <!-- Each tip_entry needs a corresponding icon, if no icon is made, use @drawable/default_icon -->
     <array name="tip_icons" translatable="false">
+        <item>@drawable/default_icon</item>
         <item>@drawable/evervolv</item>
         <item>@drawable/twitter</item>
         <item>@drawable/widgets</item>
@@ -25,13 +27,14 @@
     </array>
 
     <string-array name="tip_uri">
+        <item>null</item>
         <item>intent:#Intent;action=android.intent.action.VIEW;scheme="http://www.evervolv.com";end</item>
         <item>intent:#Intent;action=android.intent.action.MAIN;component=com.evervolv.toolbox/.Settings$LockscreenStyleActivity;end</item>
         <item>null</item>
          <item>intent:#Intent;action=android.intent.action.MAIN;component=com.evervolv.toolbox/.Settings;end</item>
         <item>intent:#Intent;action=android.intent.action.VIEW;scheme="https://github.com/Evervolv";end</item>
         <item>null</item>
-        <item>intent:#Intent;action=android.intent.action.VIEW;scheme="http://www.wiki.evervolv.com";end</item>
+        <item>intent:#Intent;action=android.intent.action.VIEW;scheme="http://wiki.evervolv.com";end</item>
         <item>intent:#Intent;action=android.intent.action.VIEW;scheme="http://review.evervolv.com";end</item>
     </string-array>
 </resources>
