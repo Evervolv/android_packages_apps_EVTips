@@ -34,7 +34,7 @@ public class StackWidgetProvider extends AppWidgetProvider {
 
     public static final String TAG = "EVTips";
 
-    public static final String CLICK_ACTION = "com.evervolv.evtips.TOAST_ACTION";
+    public static final String CLICK_ACTION = "com.evervolv.evtips.CLICK_ACTION";
     public static final String EXTRA_ITEM = "com.evervolv.evtips.EXTRA_ITEM";
     
     @Override
