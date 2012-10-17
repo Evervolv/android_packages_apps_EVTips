@@ -6,7 +6,6 @@
         <item>Press any of these tips to open the link or app associated with them!</item>
         <item>Checkout the website! http://www.evervolv.com</item>
         <item>Want a different lockscreen style? Choose one! Settings > Toolbox > Lockscreen > Lockscreen style</item>
-        <item>Don\'t forget to swipe! Swiping horizontally in the notifications dropdown, slides open a bunch of widgets of all kind!</item>
         <item>Like customizations? Checkout the toolbox. Settings > Toolbox for all sorts of options!</item>
         <item>AOSP means open source right? Find Evervolv\'s source on github! https://github.com/Evervolv</item>
         <item>Widget what? We\'ve added standalone styled widgets for your homescreen check em out. App Drawer > Widgets</item>
@@ -18,7 +17,6 @@
         <item>@drawable/default_icon</item>
         <item>@drawable/evervolv</item>
         <item>@drawable/twitter</item>
-        <item>@drawable/widgets</item>
         <item>@drawable/android</item>
         <item>@drawable/default_icon</item>
         <item>@drawable/evervolv</item>
@@ -30,7 +28,6 @@
         <item>null</item>
         <item>intent:#Intent;action=android.intent.action.VIEW;scheme="http://www.evervolv.com";end</item>
         <item>intent:#Intent;action=android.intent.action.MAIN;component=com.evervolv.toolbox/.Settings$LockscreenStyleActivity;end</item>
-        <item>null</item>
          <item>intent:#Intent;action=android.intent.action.MAIN;component=com.evervolv.toolbox/.Settings;end</item>
         <item>intent:#Intent;action=android.intent.action.VIEW;scheme="https://github.com/Evervolv";end</item>
         <item>null</item>
